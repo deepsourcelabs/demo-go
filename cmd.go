@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"io"
+	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
@@ -87,4 +88,23 @@ func createTempFile() {
 	tmpFile, _ := os.Create("emptyFile.txt")
 	log.Println(tmpFile)
 
+}
+
+func ExampleTempFile() {
+	err := ioutil.WriteFile("/tmp/demo-go", []byte("deepsource-for-go"), 0644)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func ExampleCreate() {
+	f, _ := os.Create("exampe.txt")
+	f.Close()
+}
+
+func EmptyPath(path string) bool {
+	if len(path) == 0 {
+		return true
+	}
+	return false
 }
